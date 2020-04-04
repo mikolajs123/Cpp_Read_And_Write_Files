@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  pomoc
+//  Temp_C++
 //
-//  Created by Mikołaj Semeniuk on 21/03/2020.
+//  Created by Mikołaj Semeniuk on 04/04/2020.
 //  Copyright © 2020 Mikołaj Semeniuk. All rights reserved.
 //
 
@@ -43,7 +43,7 @@ void open_and_read_file (vector<struct client> &vect, string path)
 {
     std::ifstream fin;
     fin.open(path);
-    int client_number; 
+    int client_number;
     double debt;
     while (fin >> client_number >> debt)
     {
@@ -60,7 +60,7 @@ void write_file (vector<struct client> vect, string path)
 int main(int argc, const char * argv[]) {
 
     std::vector<struct client> clients;
-    string input = "/Users/mikolajsemeniuk/Projects/C++/pomoc/pomoc/klienci.txt", output = "/Users/mikolajsemeniuk/Projects/C++/pomoc/pomoc/wynik.txt";
+    string input = "/Users/mikolajsemeniuk/Desktop/klienci.txt", output = "/Users/mikolajsemeniuk/Desktop/wynik.txt";
     open_and_read_file(clients, input);
     write_file(clients, output);
     return 0;
