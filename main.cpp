@@ -63,5 +63,6 @@ int main(int argc, const char * argv[]) {
     string input = "/Users/mikolajsemeniuk/Desktop/klienci.txt", output = "/Users/mikolajsemeniuk/Desktop/wynik.txt";
     open_and_read_file(clients, input);
     write_file(clients, output);
+    clients.clear();
     return 0;
 }
