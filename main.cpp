@@ -15,7 +15,7 @@ using namespace std;
 struct client
 {
     int client_number;
-    int debt;
+    double debt;
 };
 
 int how_many_clients_in_debt (vector<struct client> vect)
@@ -29,9 +29,9 @@ int how_many_clients_in_debt (vector<struct client> vect)
     return counter;
 }
 
-int how_high_is_debt (vector<struct client> vect)
+double how_high_is_debt (vector<struct client> vect)
 {
-    int debt = 0;
+    double debt = 0.0;
     for (int i = 0; i < vect.size(); i++)
     {
         debt += vect[i].debt;
@@ -39,27 +39,29 @@ int how_high_is_debt (vector<struct client> vect)
     return debt;
 }
 
-void open_and_read_file (vector<struct client> &vect)
+void open_and_read_file (vector<struct client> &vect, string path)
 {
     std::ifstream fin;
-    fin.open("/Users/mikolajsemeniuk/Projects/C++/pomoc/pomoc/klienci.txt");
-    int client_number, debt;
+    fin.open(path);
+    int client_number; 
+    double debt;
     while (fin >> client_number >> debt)
     {
         vect.push_back({ client_number, debt });
     }
 }
 
-void write_file (vector<struct client> vect)
+void write_file (vector<struct client> vect, string path)
 {
-    ofstream MyFile("/Users/mikolajsemeniuk/Projects/C++/pomoc/pomoc/wynik.txt");
+    ofstream MyFile(path);
     static_cast<void>(MyFile << "How many clients in debt: " << how_many_clients_in_debt(vect) << "\nTotal sum of debt: " << how_high_is_debt(vect));
 }
 
 int main(int argc, const char * argv[]) {
 
     std::vector<struct client> clients;
-    open_and_read_file(clients);
-    write_file(clients);
+    string input = "/Users/mikolajsemeniuk/Projects/C++/pomoc/pomoc/klienci.txt", output = "/Users/mikolajsemeniuk/Projects/C++/pomoc/pomoc/wynik.txt";
+    open_and_read_file(clients, input);
+    write_file(clients, output);
     return 0;
 }
